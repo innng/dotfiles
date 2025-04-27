@@ -26,6 +26,12 @@ config checkout
 config config --local status.showUntrackedFiles no
 ```
 
+## Config git
+
+```sh
+make config-git EMAIL="<email>" NAME="<name>"
+```
+
 ## Useful links
 - [Dotfiles management](https://www.atlassian.com/git/tutorials/dotfiles).
 - [Initialize pacman keyring](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/#initialize-keyring).

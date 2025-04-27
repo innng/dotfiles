@@ -34,4 +34,7 @@ setup-antidote: setup-asdf-plugins
 install-extras: setup-antidote
 	yay -S fzf thefuck zsh-autosuggestions-git zsh-syntax-highlighting-git
 
-
+config-git:
+	git config --global user.email "EMAIL" 
+	git config --global user.name "NAME"
+	/usr/bin/git --git-dir=$$HOME/.cfg/ --work-tree=$$HOME update-index --assume-unchanged .gitconfig
