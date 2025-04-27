@@ -1,11 +1,13 @@
-# Lines configured by zsh-newuser-install
+# Set up ZSH
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob notify
 unsetopt beep nomatch
 bindkey -e
-# End of lines configured by zsh-newuser-install
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ing/.zshrc'
 
@@ -38,7 +40,7 @@ antidote load
 eval $(thefuck --alias)
 
 # Set bindkeys
-bindkey '^I' autosuggest-accept
+bindkey "^I" autosuggest-accept
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
