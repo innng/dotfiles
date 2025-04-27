@@ -2,8 +2,28 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob notify
-unsetopt beep nomatch
+
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt CORRECT
+setopt CDABLE_VARS
+setopt EXTENDED_GLOB
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt COMPLETE_ALIASES
+
+unsetopt BEEP
+unsetopt NO_MATCH
+
 bindkey -e
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
