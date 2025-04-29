@@ -37,3 +37,4 @@ make config-git EMAIL="<email>" NAME="<name>"
 - [Initialize pacman keyring](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/#initialize-keyring).
 - [Users and groups](https://wiki.archlinux.org/title/Users_and_groups).
 - [Generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux).
+- [Mount Windows folder on WSL (for Obsidian)](https://forum.obsidian.md/t/support-for-vaults-in-windows-subsystem-for-linux-wsl/8580/32).
