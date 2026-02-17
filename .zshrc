@@ -34,5 +34,7 @@ bindkey '^I^I' autosuggest-accept
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
-# Show random Pokemon
-pokeget random --hide-name
+# Show fastfetch at init
+if type fastfetch > /dev/null; then
+  fastfetch
+fi

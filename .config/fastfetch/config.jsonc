@@ -1,0 +1,84 @@
+// Inspired by Catnap
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "command-raw",
+        // Choose between Pokeget or Krabby
+        // "source": "pokeget random --hide-name",
+        "source": "krabby random --no-title"
+    },
+    "display": {
+        "separator": "",
+        "key": {
+            "width": 15
+        }
+    },
+    "modules": [
+        "break",
+        {
+            // draw borders first to make colors of left and right border consistant
+            "key": " user",
+            "type": "title",
+            "format": "{user-name}",
+            "keyColor": "31"
+        },
+        {
+            "key": "󰇅 hname",
+            "type": "title",
+            "format": "{host-name}",
+            "keyColor": "32"
+
+        },
+        {
+            "key": "󰅐 uptime",
+            "type": "uptime",
+            "keyColor": "33"
+        },
+        {
+            "key": "{icon} distro",
+            "type": "os",
+            "keyColor": "34",
+            "format": "{2}"
+        },
+        {
+            "key": "󰇄 desktop",
+            "type": "wm",
+            "keyColor": "35",
+            "format": "{1}"
+        },
+        {
+            "key": " term",
+            "type": "terminal",
+            "keyColor": "36",
+            "format": "{1}"
+        },
+        {
+            "key": " shell",
+            "type": "shell",
+            "keyColor": "31",
+            "format": "{pretty-name}"
+        },
+        {
+            "key": " Font",
+            "type": "terminalfont",
+            "keyColor": "32"
+        },
+        {
+            "key": "󰝚 media",
+            "type": "media",
+            "keyColor": "33"
+        },
+        {
+            "key": "󰄛 theme",
+            "type": "command",
+            "keyColor": "34",
+            "text": "theme=$(omarchy-theme-current); echo -e \"$theme \\e[38m●\\e[37m●\\e[36m●\\e[35m●\\e[34m●\\e[33m●\\e[32m●\\e[31m●\""
+        },
+        {
+            "key": " colors",
+            "type": "colors",
+            "symbol": "circle",
+            "keyColor": "35"
+        }
+    ]
+}
