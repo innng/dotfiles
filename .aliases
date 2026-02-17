@@ -1,0 +1,10 @@
+unalias c
+unalias r
+unalias g
+unalias gcad
+unalias gcam
+unalias gcm
+
+alias vim=nvim
+alias sz='source ~/.zshrc'
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
