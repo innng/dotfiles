@@ -36,7 +36,6 @@
 #custom-update {
   min-width: 12px;
   margin: 0 7.5px;
-  font-size: 13px;
 }
 
 #tray {
@@ -47,14 +46,12 @@
   margin-right: 17px;
 }
 
-#idle_inhibitor {
+#idle-inhibitor {
   margin-right: 17px;
-  font-size: 13px;
 }
 
 #network {
   margin-right: 13px;
-  font-size: 13px;
 }
 
 #custom-expand-icon {
