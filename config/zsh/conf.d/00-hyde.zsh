@@ -1,14 +1,6 @@
 #!/usr/bin/env zsh
 
-#! ██████╗░░█████╗░  ███╗░░██╗░█████╗░████████╗  ███████╗██████╗░██╗████████╗
-#! ██╔══██╗██╔══██╗  ████╗░██║██╔══██╗╚══██╔══╝  ██╔════╝██╔══██╗██║╚══██╔══╝
-#! ██║░░██║██║░░██║  ██╔██╗██║██║░░██║░░░██║░░░  █████╗░░██║░░██║██║░░░██║░░░
-#! ██║░░██║██║░░██║  ██║╚████║██║░░██║░░░██║░░░  ██╔══╝░░██║░░██║██║░░░██║░░░
-#! ██████╔╝╚█████╔╝  ██║░╚███║╚█████╔╝░░░██║░░░  ███████╗██████╔╝██║░░░██║░░░
-#! ╚═════╝░░╚════╝░  ╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░  ╚══════╝╚═════╝░╚═╝░░░╚═╝░░░
-
-
-# Sources vital global environment variables and configurations // Users are encouraged to use ./user.zsh for customization
+# Sources vital global environment variables and configurations
 # shellcheck disable=SC1091
 if ! . "$ZDOTDIR/conf.d/hyde/env.zsh"; then
     echo "Error: Could not source $ZDOTDIR/conf.d/hyde/env.zsh"

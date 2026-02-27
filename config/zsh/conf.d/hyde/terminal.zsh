@@ -1,16 +1,7 @@
 #!/usr/bin/env zsh
 
-#! ██████╗░░█████╗░  ███╗░░██╗░█████╗░████████╗  ███████╗██████╗░██╗████████╗
-#! ██╔══██╗██╔══██╗  ████╗░██║██╔══██╗╚══██╔══╝  ██╔════╝██╔══██╗██║╚══██╔══╝
-#! ██║░░██║██║░░██║  ██╔██╗██║██║░░██║░░░██║░░░  █████╗░░██║░░██║██║░░░██║░░░
-#! ██║░░██║██║░░██║  ██║╚████║██║░░██║░░░██║░░░  ██╔══╝░░██║░░██║██║░░░██║░░░
-#! ██████╔╝╚█████╔╝  ██║░╚███║╚█████╔╝░░░██║░░░  ███████╗██████╔╝██║░░░██║░░░
-#! ╚═════╝░░╚════╝░  ╚═╝░░╚══╝░╚════╝░░░░╚═╝░░░  ╚══════╝╚═════╝░╚═╝░░░╚═╝░░░
-
-# HyDE's ZSH env configuration
+# ZSH env configuration
 # This file is sourced by ZSH on startup
-# And ensures that we have an obstruction-free .zshrc file
-# This also ensures that the proper HyDE $ENVs are loaded
 
 function _load_functions() {
     # Load all custom function files // Directories are ignored
@@ -35,8 +26,7 @@ function _dedup_zsh_plugins {
     )
     for zsh_path in "${zsh_paths[@]}"; do [[ -d $zsh_path ]] && export ZSH=$zsh_path && break; done
     # Load Plugins
-    hyde_plugins=(git zsh-256color zsh-autosuggestions zsh-syntax-highlighting)
-    plugins+=("${plugins[@]}" "${hyde_plugins[@]}")
+    plugins=(git zsh-256color zsh-autosuggestions zsh-syntax-highlighting)
     # Deduplicate plugins
     plugins=("${plugins[@]}")
     plugins=($(printf "%s\n" "${plugins[@]}" | sort -u))
@@ -65,11 +55,11 @@ function _defer_omz_after_prompt_before_input() {
     [[ -r $ZDOTDIR/.zshrc ]] && source $ZDOTDIR/.zshrc
 }
 
-function _load_deferred_plugin_system_by_hyde() {
+function _load_deferred_plugin_system() {
 
     # Exit early if HYDE_ZSH_DEFER is not set to 1
     if [[ "${HYDE_ZSH_DEFER}" != "1" ]]; then
-        unset -f _load_deferred_plugin_system_by_hyde
+        unset -f _load_deferred_plugin_system
         return
     fi
 
@@ -179,14 +169,9 @@ SAVEHIST=10000
 
 export HISTFILE ZSH_AUTOSUGGEST_STRATEGY HISTSIZE SAVEHIST
 
-# HyDE Package Manager
-PM_COMMAND=(hyde-shell pm)
-
-# Optionally load user configuration // useful for customizing the shell without modifying the main file
-if [[ -f $HOME/.hyde.zshrc ]]; then
-    source $HOME/.hyde.zshrc # for backward compatibility
-elif [[ -f $HOME/.user.zsh ]]; then
-    source $HOME/.user.zsh # renamed to .user.zsh for intuitiveness that it is a user config
+# Load user configuration
+if [[ -f $HOME/.user.zsh ]]; then
+    source $HOME/.user.zsh
 elif [[ -f $ZDOTDIR/user.zsh ]]; then
     source $ZDOTDIR/user.zsh
 fi
@@ -197,7 +182,7 @@ if [[ ${HYDE_ZSH_NO_PLUGINS} != "1" ]]; then
     _dedup_zsh_plugins
     if [[ "$HYDE_ZSH_OMZ_DEFER" == "1" ]] && [[ -r $ZSH/oh-my-zsh.sh ]]; then
         # Loads the buggy deferred oh-my-zsh plugin system by HyDE // This is only for oh-my-zsh and compatibility
-        _load_deferred_plugin_system_by_hyde
+        _load_deferred_plugin_system
         _load_prompt # This disables transient prompts sadly
     elif source $ZDOTDIR/plugin.zsh >/dev/null 2>&1; then
         # Load plugins from the user's plugin.zsh file
