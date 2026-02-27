@@ -1,0 +1,28 @@
+# Required Packages for Hyprland Setup
+
+## Core
+hyprland waybar dunst rofi swww hyprlock wlogout grim slurp
+
+## Terminal & Shell
+kitty zsh starship fastfetch
+
+## Launcher
+walker elephant
+
+## File Managers
+dolphin nautilus
+
+## System
+btop
+
+## Editor
+neovim
+
+## Applications
+firefox discord telegram-desktop stremio spotify
+
+## Optional (Flatpak)
+# flatpak install discord stremio spotify telegram obsidian
+
+## Optional (AUR)
+# yay -S spotify-adblock spicetify-cli
