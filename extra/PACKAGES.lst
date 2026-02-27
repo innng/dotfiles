@@ -1,0 +1,106 @@
+# Arch Linux Packages for Hyprland + Dotfiles Setup
+# Generated from HyDE and Omarchy projects
+# Install with: pacman -S $(cat PACKAGES.lst | grep -v '^#' | tr '\n' ' ')
+
+# Window Manager & Display
+hyprland
+hyprlock
+hypridle
+hyprpaper
+
+# Status Bar & Panel
+waybar
+
+# Launchers
+rofi
+walker
+
+# Terminal & Shell
+kitty
+zsh
+tmux
+starship
+
+# Notifications
+dunst
+
+# Session Management
+wlogout
+
+# File Manager
+dolphin
+kio
+kio-fuse
+
+# Text Editors & Development
+nano
+vim
+nvim
+
+# System Monitoring & Audio
+btop
+pavucontrol
+pipewire
+wireplumber
+alsa-utils
+
+# Clipboard & Utilities
+wl-clipboard
+cliphist
+
+# Fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-meslo-nerd-font-mono
+ttf-nerd-fonts-symbols
+
+# GTK & Qt Theming
+gtk3
+libadwaita
+qt5-base
+qt6-base
+kvantum
+qt5ct
+qt6ct
+kvantum-qt5
+
+# Icon Themes
+hicolor-icon-theme
+
+# Color Management
+colord
+
+# Input Methods
+fcitx5
+fcitx5-configtool
+fcitx5-gtk
+fcitx5-qt
+fcitx5-unikey
+
+# Network
+networkmanager
+nm-connection-editor
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Power Management
+tlp
+tlp-rdw
+
+# Development Tools (Optional)
+git
+github-cli
+base-devel
+
+# System Utilities
+pacman-contrib
+fzf
+ripgrep
+fd
+bat
+lsd
+bottom
+just
