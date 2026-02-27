@@ -53,7 +53,10 @@ exec Hyprland
 │   ├── qt5ct/ & qt6ct/   # Qt configuration
 │   └── ... (15+ more apps)
 ├── extra/                # Reference and utility files
-│   ├── colors/           # Catppuccin Mocha color reference
+│   ├── theme/            # Centralized theme system
+│   │   ├── catppuccin-mocha.sh    # Theme definition
+│   │   ├── generate-theme.sh      # Color generator
+│   │   └── generated/             # Generated app configs
 │   ├── source/hypr/      # Default Hyprland configs
 │   └── PACKAGES.lst      # Package list for installation
 ├── etc/                  # System-level configurations
@@ -73,6 +76,7 @@ exec Hyprland
 ## Documentation
 
 - **[SETUP.md](SETUP.md)**: Complete installation and configuration guide
+- **[THEME.md](THEME.md)**: Centralized theme system and color management
 - **[STATUS.md](STATUS.md)**: Project status and completion details
 - **[COPY_LOG.md](COPY_LOG.md)**: Details on files copied from HyDE and Omarchy
 - **[DIFF_PROPOSALS.md](DIFF_PROPOSALS.md)**: Configuration decisions and modifications
@@ -80,7 +84,7 @@ exec Hyprland
 
 ## Theme
 
-**Catppuccin Mocha** is hardcoded consistently across all applications:
+**Catppuccin Mocha** with centralized theme management:
 
 | Color | Hex Value | Usage |
 |-------|-----------|-------|
@@ -89,7 +93,19 @@ exec Hyprland
 | Secondary | #cba6f7 | Accent (purple) |
 | Text | #cdd6f4 | Foreground |
 
-Color reference: `~/.dots/extra/colors/catppuccin-mocha.toml`
+### Theme System
+
+Colors are centrally defined and automatically generated for each application:
+
+- **Source**: `~/.dots/extra/theme/catppuccin-mocha.sh`
+- **Generator**: `~/.dots/extra/theme/generate-theme.sh`
+- **Generated**: `~/.dots/extra/theme/generated/` (for each app)
+
+**To change theme**: Edit `catppuccin-mocha.sh` and run `generate-theme.sh`
+
+**To add a new theme**: Copy the theme file, modify colors, run generator
+
+See **[THEME.md](THEME.md)** for complete theme documentation.
 
 ## First Time Setup
 

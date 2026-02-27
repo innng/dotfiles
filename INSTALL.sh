@@ -201,6 +201,34 @@ install_packages() {
 }
 
 # ============================================================
+# Generate Theme Files
+# ============================================================
+
+generate_theme() {
+    print_section "Generating Theme Configuration Files"
+    
+    local theme_script="$DOTFILES_DIR/extra/theme/generate-theme.sh"
+    
+    # Check if theme script exists
+    if [ ! -f "$theme_script" ]; then
+        print_error "Theme generator not found: $theme_script"
+        return 1
+    fi
+    
+    # Run theme generator
+    print_info "Generating application-specific color configurations..."
+    bash "$theme_script"
+    
+    if [ $? -eq 0 ]; then
+        print_success "Theme files generated successfully"
+        return 0
+    else
+        print_error "Theme generation failed"
+        return 1
+    fi
+}
+
+# ============================================================
 # Setup Shell Configuration
 # ============================================================
 
@@ -399,19 +427,24 @@ main() {
         print_warning "Packages were not installed. Continuing with setup..."
     fi
 
-    # Step 4: Setup shell
+    # Step 4: Generate theme files
+    if ! generate_theme; then
+        print_warning "Theme generation failed. Continuing with setup..."
+    fi
+
+    # Step 5: Setup shell
     setup_shell_config
 
-    # Step 5: Link configs
+    # Step 6: Link configs
     link_configs
 
-    # Step 6: Verify installation
+    # Step 7: Verify installation
     if verify_installation; then
         print_error "Some verification checks failed"
         print_info "Review the errors above"
     fi
 
-    # Step 7: Print summary
+    # Step 8: Print summary
     print_summary
 }
 
