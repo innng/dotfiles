@@ -1,0 +1,34 @@
+/* Catppuccin Mocha Discord Theme */
+@import url('https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css');
+
+:root {
+  --accentcolor: 203, 166, 247;
+  --accentcolor2: 203, 166, 247;
+  --linkcolor: 203, 166, 247;
+  --mentioncolor: 249, 226, 175;
+  --textbrightest: 205, 214, 244;
+  --textbrighter: 205, 214, 244;
+  --textbright: 205, 214, 244;
+  --textdark: 166, 173, 200;
+  --textdarker: 134, 149, 179;
+  --textdarkest: 67, 69, 90;
+
+  --backgroundaccent: 30, 30, 46;
+  --backgroundprimary: 24, 24, 37;
+  --backgroundsecondary: 30, 30, 46;
+  --backgroundsecondaryalt: 30, 30, 46;
+  --backgroundtertiary: 30, 30, 46;
+  --backgroundfloating: 24, 24, 37;
+  --settingsicons: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 500px !important;
+  background: rgba(203, 166, 247, 0.7) !important;
+  background-clip: content-box !important;
+  border: 2px solid transparent !important;
+}

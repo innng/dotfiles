@@ -1,0 +1,92 @@
+/* Catppuccin Mocha Spotify Theme - Spicetify */
+:root {
+  --spice-accent: #CBA6F7;
+  --spice-primary: #CDD6F4;
+  --spice-secondary: #A6ADC8;
+  --spice-misc: #6C7086;
+  
+  /* Background */
+  --spice-bg-0: #11111B;
+  --spice-bg-1: #181825;
+  --spice-bg-2: #1E1E2E;
+  --spice-bg-3: #313244;
+  
+  /* Text */
+  --spice-text: #CDD6F4;
+  --spice-subtext: #A6ADC8;
+  --spice-muted: #6C7086;
+  
+  /* Sidebar */
+  --spice-sidebar: #11111B;
+  --spice-player: #181825;
+  
+  /* Buttons */
+  --spice-button: #CBA6F7;
+  --spice-button-active: #F5C2E7;
+}
+
+/* Main elements */
+.Root {
+  background-color: var(--spice-bg-0) !important;
+}
+
+.main-home-home,
+.main-yourLibraryX-library,
+.main-search-searchPage {
+  background-color: var(--spice-bg-0) !important;
+}
+
+/* Sidebar */
+.sideBar {
+  background-color: var(--spice-sidebar) !important;
+}
+
+.library-library-content {
+  background-color: var(--spice-bg-1) !important;
+}
+
+/* Player */
+.player-playerBar {
+  background-color: var(--spice-player) !important;
+}
+
+/* Buttons */
+.button-icon {
+  color: var(--spice-primary) !important;
+}
+
+.button-icon:hover {
+  color: var(--spice-accent) !important;
+}
+
+/* Progress bar */
+.progress-bar {
+  background-color: var(--spice-bg-3) !important;
+}
+
+.progress-bar-fill {
+  background-color: var(--spice-accent) !important;
+}
+
+/* Text */
+.main-type-Museo,
+.main-type-ballad,
+.text-text,
+.EntityName {
+  color: var(--spice-text) !important;
+}
+
+.main-type-mesto,
+.main-subtext-subtext {
+  color: var(--spice-subtext) !important;
+}
+
+/* Cards */
+.card-card {
+  background-color: var(--spice-bg-2) !important;
+}
+
+/* Hover states */
+.group-hover-volume {
+  background-color: var(--spice-bg-3) !important;
+}

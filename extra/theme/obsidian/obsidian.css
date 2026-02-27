@@ -1,0 +1,140 @@
+/* Catppuccin Mocha Obsidian Theme */
+:root {
+  /* Base colors */
+  --bg: #1E1E2E;
+  --bg-dark: #11111B;
+  --bg-light: #313244;
+  
+  /* Text */
+  --fg: #CDD6F4;
+  --fg-muted: #A6ADC8;
+  --fg-subtle: #6C7086;
+  
+  /* Accent */
+  --accent: #CBA6F7;
+  --accent-hover: #F5C2E7;
+  
+  /* UI elements */
+  --border: #45475A;
+  --divider: #313244;
+  
+  /* Text highlights */
+  --blue: #89B4FA;
+  --green: #A6E3A1;
+  --yellow: #F9E2AF;
+  --red: #F38BA8;
+  --purple: #CBA6F7;
+  --teal: #94E2D5;
+  --peach: #FAB387;
+  --maroon: #EBA0AC;
+  --flamingo: #F2CDCD;
+  --rosewater: #F5E0DC;
+}
+
+/* Editor */
+.cm-editor {
+  background-color: var(--bg) !important;
+}
+
+.cm-gutters {
+  background-color: var(--bg-dark) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+.cm-activeLineGutter {
+  background-color: var(--bg-light) !important;
+}
+
+.cm-activeLine {
+  background-color: rgba(49, 50, 68, 0.5) !important;
+}
+
+/* Sidebar */
+.workspace-leaf {
+  background-color: var(--bg) !important;
+}
+
+.sidebar {
+  background-color: var(--bg-dark) !important;
+}
+
+/* Title bar */
+.titlebar {
+  background-color: var(--bg-dark) !important;
+}
+
+/* Tabs */
+.tab-header {
+  background-color: var(--bg-dark) !important;
+}
+
+.tab-header.is-active {
+  background-color: var(--bg) !important;
+}
+
+/* Modals */
+.modal {
+  background-color: var(--bg) !important;
+}
+
+/* Buttons */
+button {
+  background-color: var(--bg-light) !important;
+  color: var(--fg) !important;
+}
+
+button:hover {
+  background-color: var(--accent) !important;
+  color: var(--bg-dark) !important;
+}
+
+/* Inputs */
+input, textarea {
+  background-color: var(--bg-light) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent) !important;
+}
+
+/* Text */
+body {
+  color: var(--fg) !important;
+}
+
+.markdown-preview-view {
+  color: var(--fg) !important;
+}
+
+/* Links */
+a {
+  color: var(--blue) !important;
+}
+
+/* Lists */
+.nav-files-box {
+  color: var(--fg-muted) !important;
+}
+
+/* Checkboxes */
+.checkbox-container {
+  background-color: var(--bg-light) !important;
+}
+
+/* Tags */
+.tag {
+  background-color: var(--bg-light) !important;
+  color: var(--accent) !important;
+}
+
+/* Code blocks */
+pre {
+  background-color: var(--bg-dark) !important;
+}
+
+code {
+  background-color: var(--bg-light) !important;
+  color: var(--peach) !important;
+}
