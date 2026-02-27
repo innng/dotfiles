@@ -63,7 +63,14 @@ The copy phase has been completed successfully. All configuration files from HyD
 **Locations**: `~/.dots/.config/environment.d/`, `~/.dots/.config/dolphinrc`
 
 #### Package List (1 file)
-- ✅ PACKAGES.lst: Categorized package list for Arch Linux
+- ✅ PACKAGES.lst: Curated package list for Arch Linux (77 packages total)
+  - Audio: PipeWire stack + Wiremix TUI mixer
+  - System: Hyprland, Dunst, Wlogout, Rofi, Walker
+  - Terminals: Kitty, Zsh, Tmux, Starship
+  - Tools: Modern CLI/TUI utilities (btop, bat, eza, ripgrep, etc)
+  - Fonts: FiraCode, Mononoki, JetBrains Mono, Noto fonts
+  - Theming: Qt/GTK configuration tools
+  - Development: base-devel, git, github-cli (optional)
 
 **Location**: `~/.dots/extra/PACKAGES.lst`
 

@@ -1,0 +1,186 @@
+# Arch Linux Hyprland Dotfiles - Git Ignore Rules
+# Prevents tracking of runtime files, sensitive data, and system-generated files
+
+# ============================================================
+# Shell/Runtime Files
+# ============================================================
+
+# Shell history and state
+.zsh_history
+.bash_history
+.zsh_sessions
+.history
+
+# Tmux
+.tmux/resurrect/
+.tmux/sessions/
+
+# ============================================================
+# Sensitive Information
+# ============================================================
+
+# Git configuration with credentials
+.gitconfig.local
+.git/config.local
+.credentials
+credentials
+.ssh/
+
+# Shell environment overrides (may contain secrets)
+.env
+.env.local
+.zshenv.local
+.bashrc.local
+
+# SSH and GPG keys
+*.pem
+*.key
+*.gpg
+
+# ============================================================
+# Application Runtime Files
+# ============================================================
+
+# Cache directories
+.cache/
+.local/share/
+.local/state/
+
+# Kitty runtime
+kitty/kitty.sock
+
+# Hyprland runtime
+.config/hypr/.cache/
+.config/hypr/hyprland.log
+
+# Zsh cache
+zsh/.zcompdump*
+zsh/.zshrc.zwc*
+
+# Rofi cache
+.config/rofi/.cache/
+
+# Starship cache
+.config/starship/.cache/
+
+# Tmux plugins (if used)
+.config/tmux/plugins/
+
+# ============================================================
+# Temporary and Build Files
+# ============================================================
+
+# Backup files
+*.backup
+*.bak
+*.backup.*
+*~
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*#
+
+# OS-specific
+.DS_Store
+Thumbs.db
+*.o
+*.so
+
+# ============================================================
+# Development Files (optional)
+# ============================================================
+
+# Version control merge conflicts
+*.orig
+*.rej
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================
+# System Generated Files
+# ============================================================
+
+# Package manager locks (may want to track these)
+# Uncomment if needed:
+# /extra/PACKAGES.lst.lock
+
+# Log files
+*.log
+
+# PID files
+*.pid
+
+# ============================================================
+# Wallpapers and Media
+# ============================================================
+
+# Large media files (configure as needed)
+# *.png
+# *.jpg
+# *.jpeg
+# *.mp4
+# *.mkv
+# *.flac
+# *.mp3
+
+# ============================================================
+# Backup Directories
+# ============================================================
+
+# Auto-generated backups
+*-backup/
+*-bak/
+backup/
+backups/
+.backups/
+
+# ============================================================
+# Dotfiles-Specific
+# ============================================================
+
+# User-specific overrides
+.local/
+
+# Temporary installation artifacts
+/INSTALL.log
+/INSTALL.err
+
+# Documentation build artifacts (if any)
+/docs/_build/
+
+# ============================================================
+# Important: DO NOT IGNORE THESE
+# ============================================================
+
+# Keep configuration files
+!.config/
+!.config/**
+
+# Keep reference files
+!extra/
+!extra/**
+
+# Keep documentation
+!*.md
+!*.txt
+
+# Keep scripts
+!INSTALL.sh
+!INSTALL*.sh
+!*.sh
+!bin/
+!bin/**
+
+# Keep package list
+!extra/PACKAGES.lst
+
+# Keep git files
+!.gitignore
+!.gitattributes

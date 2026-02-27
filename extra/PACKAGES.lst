@@ -1,106 +1,140 @@
 # Arch Linux Packages for Hyprland + Dotfiles Setup
-# Generated from HyDE and Omarchy projects
+# Curated from HyDE and Omarchy projects for Arch Linux
 # Install with: pacman -S $(cat PACKAGES.lst | grep -v '^#' | tr '\n' ' ')
 
+# ============================================================
 # Window Manager & Display
+# ============================================================
 hyprland
 hyprlock
 hypridle
-hyprpaper
-
-# Status Bar & Panel
+hyprsunset
 waybar
 
+# ============================================================
 # Launchers
+# ============================================================
 rofi
 walker
 
+# ============================================================
 # Terminal & Shell
+# ============================================================
 kitty
 zsh
 tmux
 starship
 
-# Notifications
+# ============================================================
+# Notifications & Session
+# ============================================================
 dunst
-
-# Session Management
 wlogout
 
+# ============================================================
 # File Manager
+# ============================================================
 dolphin
-kio
-kio-fuse
+ark
+unzip
 
-# Text Editors & Development
-nano
-vim
-nvim
-
-# System Monitoring & Audio
-btop
-pavucontrol
-pipewire
-wireplumber
-alsa-utils
-
-# Clipboard & Utilities
-wl-clipboard
+# ============================================================
+# Screenshot & Color Tools
+# ============================================================
+grim
+hyprpicker
+slurp
+satty
 cliphist
+wl-clipboard
+wl-clip-persist
 
+# ============================================================
+# Wallpaper
+# ============================================================
+awww
+
+# ============================================================
+# Audio & Multimedia
+# ============================================================
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+gst-plugin-pipewire
+wireplumber
+wiremix
+
+# ============================================================
+# System & Network
+# ============================================================
+networkmanager
+network-manager-applet
+bluez
+bluez-utils
+playerctl
+udiskie
+uwsm
+
+# ============================================================
+# Theming & UI Configuration
+# ============================================================
+nwg-look
+qt5ct
+qt6ct
+kvantum
+kvantum-qt5
+qt5-wayland
+qt6-wayland
+nwg-displays
+polkit-gnome
+
+# ============================================================
 # Fonts
+# ============================================================
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
-ttf-meslo-nerd-font-mono
+ttf-firacode-nerd
+ttf-mononoki-nerd
+ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 
-# GTK & Qt Theming
-gtk3
-libadwaita
-qt5-base
-qt6-base
-kvantum
-qt5ct
-qt6ct
-kvantum-qt5
+# ============================================================
+# System Monitoring & CLI Tools
+# ============================================================
+btop
+fastfetch
+bat
+eza
+fd
+ripgrep
+fzf
+dust
+impala
+bluetui
+tldr
 
-# Icon Themes
-hicolor-icon-theme
+# ============================================================
+# XDG & Portal Support
+# ============================================================
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+xdg-user-dirs
+libnotify
 
-# Color Management
-colord
+# ============================================================
+# Utilities & Dependencies
+# ============================================================
+pacman-contrib
+jq
+parallel
+imagemagick
 
-# Input Methods
-fcitx5
-fcitx5-configtool
-fcitx5-gtk
-fcitx5-qt
-fcitx5-unikey
-
-# Network
-networkmanager
-nm-connection-editor
-
-# Bluetooth
-bluez
-bluez-utils
-
-# Power Management
-tlp
-tlp-rdw
-
-# Development Tools (Optional)
+# ============================================================
+# Development (Optional)
+# ============================================================
+base-devel
 git
 github-cli
-base-devel
-
-# System Utilities
-pacman-contrib
-fzf
-ripgrep
-fd
-bat
-lsd
-bottom
-just
