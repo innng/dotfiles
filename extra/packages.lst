@@ -49,6 +49,7 @@ qt6-wayland
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-terminal-exec
+xmlstarlet
 
 # Applications
 firefox
