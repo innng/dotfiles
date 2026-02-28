@@ -477,7 +477,8 @@ yay -S $(cat extra/packages.lst | grep -v '^#' | grep -v '^$')
 - **Description**: Implement wallpaper cycling using `swww` (Wayland wallpaper daemon) to replace omarchy-menu background functionality
 - **Target**: Keybinding `SUPER CTRL + SPACE` for cycling through wallpapers
 - **Implementation**: 
-  - Research swww transitions and API
+  - Research HyDE and Omarchy approaches to swww integration (check their implementations)
+  - Research swww transitions and API documentation
   - Create script to cycle through wallpapers in a configured directory
   - Add keybinding to hypr/bindings/utilities.conf
 - **Files to modify**: 
@@ -491,6 +492,46 @@ yay -S $(cat extra/packages.lst | grep -v '^#' | grep -v '^$')
   - `~/.dots/.config/zsh/conf.d/hyde/` - Verify all scripts are framework-agnostic
   - `~/.dots/.config/zsh/zshrc` - Check for external script dependencies
 - **Action**: Remove HyDE branding, ensure compatibility with other shells if needed
+
+### 3. Review Hyprland Configuration
+- **Status**: Not reviewed
+- **Description**: Comprehensive audit of Hyprland configuration for outdated or omarchy-specific settings
+- **Files to review**:
+  - `~/.dots/.config/hypr/` (active configs)
+  - `~/.dots/extra/source/hypr/` (reference configs)
+- **Action**: Ensure all configs follow modern Hyprland practices and are self-contained
+
+### 4. Starship Prompt Configuration
+- **Status**: In progress
+- **Description**: Merge Omarchy, HyDE, and pure preset approaches for the shell prompt
+- **Target**: Use `starship preset pure-preset` as foundation
+- **Current implementations analyzed**:
+  - **Pure preset**: Minimal, clean design with essential info (directory, git status, character)
+  - **Omarchy config**: Simple format with directory, git branch, git status, and character symbols
+  - **Current HyDE config**: Complex with many language/tool indicators, right-aligned modules
+- **Merge strategy**:
+  1. Start with `starship preset pure-preset` as base
+  2. Integrate useful Omarchy elements: simplified git symbols and cleaner format
+  3. Keep language/environment detection minimal (only show when in relevant directories)
+  4. Preserve character indicator (success ❯ / error ✗) from Omarchy
+  5. Consider single-line vs two-line prompt based on use case
+- **Files involved**:
+  - `~/.dots/.config/starship/starship.toml` (main active config)
+  - `~/.dots/.config/starship-omarchy/starship.toml` (reference implementation)
+  - `~/.dots/.config/starship/powerline.toml` (alternative theme for reference)
+- **Decision needed**: Keep current complex config, or simplify to pure-based minimalist approach?
+
+### 5. UWSM Configuration Consolidation
+- **Status**: In progress
+- **Description**: Review and merge `uwsm-omarchy/` configuration with new unified UWSM setup
+- **Implementation**:
+  - Restore `uwsm-omarchy/` directory
+  - Analyze env vars and settings
+  - Merge valuable configs into main UWSM structure
+  - Document any Omarchy-specific setup that should be preserved
+- **Files to review**:
+  - `~/.dots/.config/uwsm-omarchy/env`
+  - `~/.dots/.config/uwsm-omarchy/default/`
 
 ---
 

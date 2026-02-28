@@ -1,0 +1,18 @@
+# Omarchy UWSM Configuration
+# NOTE: This is a preserved reference configuration showing how Omarchy integrated with UWSM
+# Most functionality has been integrated into the main UWSM setup
+
+# Ensure Omarchy bins are in the path (if Omarchy is installed)
+# export OMARCHY_PATH=$HOME/.local/share/omarchy
+# export PATH=$OMARCHY_PATH/bin:$PATH
+
+# DEPRECATED: Terminal and editor are now managed in ~/.config/uwsm/env.d/02-applications.sh
+# export TERMINAL=xdg-terminal-exec
+# export EDITOR=nvim
+
+# Optional: Activate mise if present on the system
+# omarchy-cmd-present mise && eval "$(mise activate bash)"
+
+# Custom screenshot and screenrecord directories (optional)
+# export OMARCHY_SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+# export OMARCHY_SCREENRECORD_DIR="$HOME/Videos/Screencasts"

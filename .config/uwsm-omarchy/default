@@ -1,0 +1,15 @@
+# Omarchy UWSM Default Configuration
+# NOTE: This is preserved as a reference from the Omarchy project
+# Most configuration has been moved to ~/.config/uwsm/env.d/
+
+# Terminal: Now managed via TERMINAL variable in env.d/02-applications.sh
+# export TERMINAL=xdg-terminal-exec
+
+# Editor: Now managed via EDITOR variable in env.d/02-applications.sh
+# export EDITOR=nvim
+
+# Screenshot directory (optional - uncomment and create directory if needed)
+# export OMARCHY_SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+
+# Screenrecording directory (optional - uncomment and create directory if needed)
+# export OMARCHY_SCREENRECORD_DIR="$HOME/Videos/Screencasts"
