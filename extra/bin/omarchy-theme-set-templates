@@ -1,9 +1,12 @@
 #!/bin/bash
 
-TEMPLATES_DIR="$OMARCHY_PATH/default/themed"
-USER_TEMPLATES_DIR="$HOME/.config/omarchy/themed"
-NEXT_THEME_DIR="$HOME/.config/omarchy/current/next-theme"
-COLORS_FILE="$NEXT_THEME_DIR/colors.toml"
+# Generate config files from templates using theme colors
+# Called by dots-theme-apply
+
+DOTS="$HOME/.dots"
+TEMPLATE_DIR="${DOTS_SOURCE_DIR:-$DOTS/extra/source/templates}"
+OUTPUT_DIR="${DOTS_THEME_DIR:-$DOTS/.config/theme}"
+COLORS_FILE="$OUTPUT_DIR/colors.toml"
 
 # Convert hex color to decimal RGB (e.g., "#1e1e2e" -> "30,30,46")
 hex_to_rgb() {
@@ -31,12 +34,12 @@ if [[ -f $COLORS_FILE ]]; then
 
   shopt -s nullglob
 
-  # Process user templates first, then built-in templates (user overrides built-in)
-  for tpl in "$USER_TEMPLATES_DIR"/*.tpl "$TEMPLATES_DIR"/*.tpl; do
+  # Process templates
+  for tpl in "$TEMPLATE_DIR"/*.tpl; do
     filename=$(basename "$tpl" .tpl)
-    output_path="$NEXT_THEME_DIR/$filename"
+    output_path="$OUTPUT_DIR/$filename"
 
-    # Don't overwrite configs already exists in the output directory (copied from theme specific folder)
+    # Don't overwrite configs already in the output directory (copied from theme folder)
     if [[ ! -f $output_path ]]; then
       sed -f "$sed_script" "$tpl" >"$output_path"
     fi

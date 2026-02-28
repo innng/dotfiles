@@ -1,60 +1,54 @@
 #!/bin/bash
 
+# Apply theme to generate config files in ~/.dots/.config/theme/
+# Usage: dots-theme-apply <theme-name>
+
+DOTS="$HOME/.dots"
+THEME_DIR="$DOTS/extra/themes"
+SOURCE_DIR="$DOTS/extra/source/templates"
+OUTPUT_DIR="$DOTS/.config/theme"
+
 if [[ -z $1 ]]; then
-  echo "Usage: omarchy-theme-set <theme-name>"
+  echo "Usage: $0 <theme-name>"
   exit 1
 fi
-
-CURRENT_THEME_PATH="$HOME/.config/omarchy/current/theme"
-NEXT_THEME_PATH="$HOME/.config/omarchy/current/next-theme"
-USER_THEMES_PATH="$HOME/.config/omarchy/themes"
-OMARCHY_THEMES_PATH="$OMARCHY_PATH/themes"
 
 THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+THEME_PATH="$THEME_DIR/$THEME_NAME"
 
-if [[ ! -d $OMARCHY_THEMES_PATH/$THEME_NAME ]] && [[ ! -d $USER_THEMES_PATH/$THEME_NAME ]]; then
-  echo "Theme '$THEME_NAME' does not exist"
+if [[ ! -d $THEME_PATH ]]; then
+  echo "Theme '$THEME_NAME' does not exist in $THEME_DIR"
   exit 1
 fi
 
-# Setup clean next theme directory (for atomic theme config swapping)
-rm -rf "$NEXT_THEME_PATH"
-mkdir -p "$NEXT_THEME_PATH"
+# Create output directory
+mkdir -p "$OUTPUT_DIR"
 
-# Copy official theme first, then overlay user customizations on top
-cp -r "$OMARCHY_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
-cp -r "$USER_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
+# Copy theme files first
+cp -r "$THEME_PATH/"* "$OUTPUT_DIR/" 2>/dev/null
 
-# Generate dynamic configs
-omarchy-theme-set-templates
+# Generate configs from templates
+DOTS_THEME_DIR="$OUTPUT_DIR" DOTS_SOURCE_DIR="$SOURCE_DIR" "$DOTS/extra/bin/omarchy-theme-set-templates"
 
-# Swap next theme in as current
-rm -rf "$CURRENT_THEME_PATH"
-mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
-
-# Store theme name for reference
-echo "$THEME_NAME" >"$HOME/.config/omarchy/current/theme.name"
-
-# Change background with theme
-omarchy-theme-bg-next
-
-# Restart components to apply new theme
+# Restart components
 if pgrep -x waybar >/dev/null; then
-  omarchy-restart-waybar
+  waybarctl reload 2>/dev/null || pkill -HUP waybar
 fi
-omarchy-restart-swayosd
-omarchy-restart-terminal
-omarchy-restart-hyprctl
-omarchy-restart-btop
-omarchy-restart-opencode
-omarchy-restart-mako
 
-# Change app-specific themes
-omarchy-theme-set-gnome
-omarchy-theme-set-browser
-omarchy-theme-set-vscode
-omarchy-theme-set-obsidian
-omarchy-theme-set-keyboard
+if pgrep -x hyprlock >/dev/null; then
+  pkill -RUSTERM hyprlock
+fi
 
-# Call hook on theme set
-omarchy-hook theme-set "$THEME_NAME"
+if pgrep -x kitty >/dev/null; then
+  pkill -USR1 kitty
+fi
+
+if pgrep -x mako >/dev/null; then
+  pkill -HUP mako
+fi
+
+if pgrep -x btop >/dev/null; then
+  btop --reload
+fi
+
+echo "Theme '$THEME_NAME' applied successfully"
