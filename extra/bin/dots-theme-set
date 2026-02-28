@@ -28,7 +28,7 @@ mkdir -p "$OUTPUT_DIR"
 cp -r "$THEME_PATH/"* "$OUTPUT_DIR/" 2>/dev/null
 
 # Generate configs from templates
-DOTS_THEME_DIR="$OUTPUT_DIR" DOTS_SOURCE_DIR="$SOURCE_DIR" "$DOTS/extra/bin/omarchy-theme-set-templates"
+DOTS_THEME_DIR="$OUTPUT_DIR" DOTS_SOURCE_DIR="$SOURCE_DIR" "$DOTS/extra/bin/dots-theme-set-templates"
 
 # Restart components
 if pgrep -x waybar >/dev/null; then
