@@ -1,6 +1,6 @@
 force_keyboard_focus = true                                                 # forces keyboard forcus to stay in Walker
 selection_wrap = true                                                       # wrap list if at bottom or top
-theme = "omarchy-default"                                                   # theme to use
+theme = "catppuccin-mocha"                                                  # theme to use
 additional_theme_location = "~/.dots/extra/source/walker/themes/"
 hide_action_hints = true                                                    # globally hide the action hints
 
@@ -46,4 +46,4 @@ provider = "clipboard"
 
 [[emergencies]]
 text = "Restart Walker"
-command = "omarchy-restart-walker"
+command = "pkill -HUP walker"

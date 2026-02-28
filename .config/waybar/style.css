@@ -1,6 +1,9 @@
+/* Load theme colors from ~/.dots/.config/theme/waybar.css */
+@import url("file://~/.dots/.config/theme/waybar.css");
+
 * {
-  background-color: #1e1e2e;
-  color: #cdd6f4;
+  background-color: @background;
+  color: @foreground;
 
   border: none;
   border-radius: 0;
