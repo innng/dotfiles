@@ -1,20 +1,20 @@
 {
     "label": "lock",
-    "action": "lockscreen.sh",
+    "action": "hyprlock",
     "text": "Lock",
     "keybind": "l"
 }
 
 {
     "label": "logout",
-    "action": "hyde-shell logout",
+    "action": "loginctl terminate-user $USER",
     "text": "Logout",
     "keybind": "e"
 }
 
 {
     "label": "suspend",
-    "action": "lockscreen.sh & disown && systemctl suspend",
+    "action": "hyprlock & disown && systemctl suspend",
     "text": "Suspend",
     "keybind": "u"
 }
