@@ -1,16 +1,46 @@
-# Some dots here and there
+# Dots - Hyprland Dotfiles
 
-Hyprland setup heavily based on [HyDE](https://github.com/HyDE-Project/HyDE) and [Omarchy](https://github.com/basecamp/omarchy).
+A simplified, self-contained dotfiles project for Arch Linux + Hyprland based on [HyDE](https://github.com/HyDE-Project/HyDE) and [Omarchy](https://github.com/basecamp/omarchy).
 
-## Dependecies
+**Status**: Work in progress - Theme system fully integrated, main applications configured.
 
-### Packages
-```sh
-$ yay -S base-devel nvim git waybar dunst walker swww hyprlock wlogout kitty zsh starship fastfetch rofi nautilus zip unzip
-$ flatpak install [discord, stremio, spotify, telegram, obsidian]
-```
+## Quick Start
 
-### Projects
-- Bootloader: [Catppuccin Grub](https://github.com/catppuccin/grub)
-- Greeter: [Catppuccin SDDM](https://github.com/catppuccin/sddm)
+For complete installation and configuration instructions, see **[SETUP.md](SETUP.md)**.
+
+## Features
+
+- **Unified Theme System**: Catppuccin Mocha with single-point color management
+- **Modular Configuration**: Well-organized config structure for easy customization
+- **No External Dependencies**: Self-contained without reliance on HyDE or Omarchy projects
+- **Essential Applications**: Hyprland, Waybar, Kitty, Rofi, Walker, and more
+- **Theme Generation**: Automatic config generation from templates
+
+## Installation Overview
+
+1. Clone repository: `git clone https://github.com/yourusername/dots ~/.dots`
+2. Install packages: `yay -S $(cat ~/.dots/extra/packages.lst | grep -v '^#')`
+3. Generate theme: `~/.dots/extra/bin/dots-theme-set catppuccin-mocha`
+4. Symlink configs: `ln -s ~/.dots/.config ~/.config`
+5. Set shell: `chsh -s /usr/bin/zsh`
+
+See [SETUP.md](SETUP.md) for detailed instructions.
+
+## Key Applications
+
+- **Window Manager**: Hyprland
+- **Status Bar**: Waybar
+- **Terminal**: Kitty
+- **Launcher**: Walker, Rofi
+- **Shell**: Zsh with Starship prompt
+- **System Monitor**: Btop
+- **Notifications**: Mako
+- **Session Menu**: Wlogout
+- **Lock Screen**: Hyprlock
+
+## Credits
+
+- [HyDE Project](https://github.com/HyDE-Project/HyDE)
+- [Omarchy](https://github.com/basecamp/omarchy)
+- [Catppuccin](https://github.com/catppuccin/catppuccin)
 
