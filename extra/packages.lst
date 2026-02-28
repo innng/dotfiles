@@ -1,0 +1,68 @@
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+wiremix
+pamixer
+playerctl
+
+# Network & Bluetooth
+iwd
+bluetui
+
+# Display Manager
+sddm
+qt5-quickcontrols
+qt5-quickcontrols2
+qt5-graphicaleffects
+
+# Window Manager & Components
+hyprland
+mako
+rofi
+waybar
+swww
+hyprlock
+wlogout
+grim
+hyprpicker
+slurp
+satty
+hypridle
+
+# Dependencies
+polkit-gnome
+pacman-contrib
+jq
+libnotify
+noto-fonts-emoji
+nwg-look
+qt5ct
+qt6ct
+kvantum
+kvantum-qt5
+qt5-wayland
+qt6-wayland
+
+# Applications
+firefox
+kitty
+dolphin
+unzip
+vim
+nwg-displays
+fzf
+fastfetch
+btop
+tmux
+
+# Shell
+zsh
+starship
+
+# Extra (AUR)
+yay
+bat
+eza
+duf
