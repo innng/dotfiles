@@ -470,6 +470,30 @@ yay -S $(cat extra/packages.lst | grep -v '^#' | grep -v '^$')
 
 ---
 
+## TODO: Outstanding Tasks
+
+### 1. Wallpaper Cycling with swww
+- **Status**: Not implemented
+- **Description**: Implement wallpaper cycling using `swww` (Wayland wallpaper daemon) to replace omarchy-menu background functionality
+- **Target**: Keybinding `SUPER CTRL + SPACE` for cycling through wallpapers
+- **Implementation**: 
+  - Research swww transitions and API
+  - Create script to cycle through wallpapers in a configured directory
+  - Add keybinding to hypr/bindings/utilities.conf
+- **Files to modify**: 
+  - `extra/source/hypr/bindings/utilities.conf` (Line 13)
+  - `extra/source/hypr/autostart.conf` (add swww daemon)
+
+### 2. Review Zsh Configuration
+- **Status**: Not reviewed
+- **Description**: Audit zsh shell configuration for any remaining HyDE/Omarchy dependencies
+- **Files to review**:
+  - `~/.dots/.config/zsh/conf.d/hyde/` - Verify all scripts are framework-agnostic
+  - `~/.dots/.config/zsh/zshrc` - Check for external script dependencies
+- **Action**: Remove HyDE branding, ensure compatibility with other shells if needed
+
+---
+
 ## Troubleshooting
 
 ### Applications not picking up theme colors
