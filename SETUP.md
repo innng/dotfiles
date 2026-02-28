@@ -221,6 +221,112 @@ Follow the installation instructions for:
 
 ---
 
+## UWSM Configuration
+
+The dotfiles use **UWSM** (Universal Wayland Session Manager) to manage environment variables across the session. The configuration is modular and extensible.
+
+### UWSM Structure
+
+```
+~/.dots/.config/uwsm/
+├── env                          # Main loader (sources env.d/*.sh)
+├── env-hyprland                 # Hyprland-specific loader (sources env-hyprland.d/*.sh)
+├── env.d/                       # Global environment variable scripts
+│   ├── 01-gpu.sh               # GPU detection and VRAM allocation
+│   └── 02-applications.sh      # BROWSER, TERMINAL, EDITOR defaults
+└── env-hyprland.d/             # Hyprland-specific environment variables
+    └── 00-hypr.sh              # Qt, Firefox, Electron, systemd settings
+```
+
+### Reference Implementation
+
+`~/.dots/.config/uwsm-omarchy/` contains the original Omarchy UWSM integration as reference. Key insights:
+- Omarchy provided PATH management for its binaries (now unnecessary since we use standard tools)
+- Terminal/editor defaults were in a separate `default` file (now consolidated into `02-applications.sh`)
+- Optional mise activation support is documented for future use
+
+### Environment Variables by Category
+
+**Application Defaults** (`env.d/02-applications.sh`):
+- `BROWSER=firefox` - Default web browser (used by keybindings)
+- `TERMINAL=kitty` - Default terminal (used by keybindings)
+- `EDITOR=nvim` - Default text editor (used by keybindings)
+
+Override example:
+```bash
+export BROWSER=chromium TERMINAL=alacritty EDITOR=vim
+```
+
+**GPU Setup** (`env.d/01-gpu.sh`):
+- Automatically detects GPU hardware (AMD, Intel, NVIDIA, Nouveau)
+- Sets appropriate VA-API and rendering drivers
+- Configurations for common GPU setups: hybrid Intel-NVIDIA, AMD-only, etc.
+- Users can create `env.d/03-custom-gpu.sh` to override defaults
+
+**Hyprland Session** (`env-hyprland.d/00-hypr.sh`):
+- **Qt variables**: `QT_QPA_PLATFORM`, `QT_AUTO_SCREEN_SCALE_FACTOR`, `QT_WAYLAND_DISABLE_WINDOWDECORATION`
+- **Firefox**: `MOZ_ENABLE_WAYLAND=1` (performance optimization)
+- **Electron apps**: `ELECTRON_OZONE_PLATFORM_HINT=auto`
+- **Systemd integration**: `HYPRLAND_NO_SD_NOTIFY=1`, `HYPRLAND_NO_SD_VARS=1`
+
+**HiDPI Scaling** (in `extra/source/hypr/envs.conf`):
+- `GDK_SCALE=2` - Xwayland apps scaling (for high-DPI displays)
+- Configured in Hyprland's native env config (takes precedence over UWSM)
+
+### Extending UWSM
+
+Add custom environment variables by creating new scripts in `~/.dots/.config/uwsm/env.d/`:
+
+```bash
+# Create: ~/.dots/.config/uwsm/env.d/03-custom.sh
+#!/usr/bin/env sh
+
+# Custom environment variables
+export MY_CUSTOM_VAR="value"
+export ANOTHER_VAR="another value"
+```
+
+Files are sourced alphabetically, so use numeric prefixes to control load order:
+- `01-gpu.sh` (first - GPU detection)
+- `02-applications.sh` (second - app defaults, uses GPU_SETUP from 01)
+- `03-custom.sh` (custom additions)
+
+### UWSM vs Hyprland vs Shell Environment
+
+Three overlapping layers manage environment variables:
+
+| Layer | Location | Loading | Precedence | Use For |
+|-------|----------|---------|-----------|---------|
+| **UWSM** | `~/.config/uwsm/` | At session start | Lowest | Session-wide vars (GPU, apps) |
+| **Hyprland** | `extra/source/hypr/envs.conf` | On Hyprland start | Middle | Hyprland-specific (GDK_SCALE) |
+| **Shell** | `~/.config/zsh/` | On shell start | Highest | Shell-specific (PATH, history) |
+
+**Resolution order**: Shell env > Hyprland env > UWSM env
+
+This allows overriding at any level:
+- Set `BROWSER` globally in UWSM
+- Override in Hyprland's `envs.conf`
+- Override again in shell's `.zshrc`
+
+### Troubleshooting UWSM Issues
+
+**Application using wrong defaults:**
+1. Check if `env.d/02-applications.sh` was sourced: `echo $BROWSER`
+2. Override in shell: `export BROWSER=chromium` in `~/.zshrc`
+3. Verify UWSM files have execute permissions: `chmod +x ~/.config/uwsm/env.d/*.sh`
+
+**GPU drivers not detected:**
+1. Check what was detected: Look at UWSM logs or check `echo $GPU_SETUP`
+2. Create custom GPU config: `~/.config/uwsm/env.d/04-gpu-override.sh`
+3. Verify drivers installed: `lspci -vv | grep -i gpu`
+
+**HiDPI scaling not working:**
+1. Scaling is in `extra/source/hypr/envs.conf`, not UWSM
+2. Edit `~/.dots/extra/source/hypr/envs.conf` and change `GDK_SCALE` value
+3. Reload Hyprland: `hyprctl reload` or restart session
+
+---
+
 ## Theme System
 
 ### Theme Architecture
