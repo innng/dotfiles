@@ -36,7 +36,9 @@ polkit-gnome
 pacman-contrib
 jq
 libnotify
+noto-fonts
 noto-fonts-emoji
+fontconfig
 nwg-look
 qt5ct
 qt6ct
@@ -44,6 +46,8 @@ kvantum
 kvantum-qt5
 qt5-wayland
 qt6-wayland
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 xdg-terminal-exec
 
 # Applications
@@ -67,3 +71,7 @@ yay
 bat
 eza
 duf
+woff2-font-awesome
+ttf-jetbrains-mono-nerd
+mononoki-nerd-font
+nerd-fonts-fira
