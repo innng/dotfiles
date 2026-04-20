@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  echo "Usage: dots-theme-set <theme-name>"
+  exit 1
+fi
+
+THEMES_DIR="$HOME/.dots/config/themes"
+OUTPUT_DIR="$HOME/.config/theme"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+if [[ ! -d $THEMES_DIR/$THEME_NAME ]]; then
+  echo "Theme '$THEME_NAME' does not exist"
+  exit 1
+fi
+
+rm -rf "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR"
+
+cp -r "$THEMES_DIR/$THEME_NAME/"* "$OUTPUT_DIR/"
+
+echo "$THEME_NAME" >"$OUTPUT_DIR/name"
+
+dots-theme-set-templates
+
+if pgrep -x waybar >/dev/null; then
+  killall -SIGUSR2 waybar
+fi
+if pgrep -x mako >/dev/null; then
+  killall -SIGHUP mako
+fi
+if pgrep -x swayosd >/dev/null; then
+  killall -SIGUSR1 swayosd
+fi
+

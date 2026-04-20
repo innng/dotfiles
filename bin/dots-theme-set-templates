@@ -1,0 +1,45 @@
+#!/bin/bash
+
+TEMPLATES_DIR="$HOME/.dots/config/templates"
+OUTPUT_DIR="$HOME/.config/theme"
+COLORS_FILE="$OUTPUT_DIR/colors.toml"
+
+hex_to_rgb() {
+  local hex="${1#\#}"
+  printf "%d,%d,%d" "0x${hex:0:2}" "0x${hex:2:2}" "0x${hex:4:2}"
+}
+
+if [[ ! -f $COLORS_FILE ]]; then
+  echo "No colors.toml found in $OUTPUT_DIR"
+  exit 1
+fi
+
+sed_script=$(mktemp)
+
+while IFS='=' read -r key value || [[ -n $key ]]; do
+  key="${key//[\"\' ]/}"
+  [[ $key && $key != \#* ]] || continue
+  value="${value#*[\"\']}"
+  value="${value%%[\"\']*}"
+
+  printf 's|{{ %s }}|%s|g\n' "$key" "$value"
+  printf 's|{{ %s_strip }}|%s|g\n' "$key" "${value#\#}"
+  if [[ $value =~ ^# ]]; then
+    rgb=$(hex_to_rgb "$value")
+    echo "s|{{ ${key}_rgb }}|${rgb}|g"
+  fi
+done <"$COLORS_FILE" >"$sed_script"
+
+shopt -s nullglob
+
+for tpl in "$TEMPLATES_DIR"/*.tpl; do
+  filename=$(basename "$tpl" .tpl)
+  output_path="$OUTPUT_DIR/$filename"
+
+  if [[ ! -f $output_path ]]; then
+    sed -f "$sed_script" "$tpl" >"$output_path"
+  fi
+done
+
+rm "$sed_script"
+
