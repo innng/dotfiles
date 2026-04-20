@@ -1,0 +1,5 @@
+#!/bin/sh
+# Xsetup - run as root before the login dialog appears
+
+xrandr --output DP-2 --auto --primary
+xrandr --output DP-1 --right-of DP-2 --rotate right --noprimary
