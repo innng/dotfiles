@@ -1,8 +1,1 @@
-# Changes require a restart to take effect.
-
-# Ensure bins are in the path
-export PATH=$HOME/.dots/bin:$PATH:$HOME/.local/bin
-
-# Set default terminal and editor
-source ~/.config/uwsm/default
-
+source ~/.dots/source/uwsm/env
