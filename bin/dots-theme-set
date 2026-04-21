@@ -43,6 +43,8 @@ if pgrep -x swayosd >/dev/null; then
   killall -SIGUSR1 swayosd
 fi
 
+hyprctl reload
+
 # btop theme symlink
 mkdir -p "$HOME/.config/btop/themes"
 ln -sf "$OUTPUT_DIR/btop.theme" "$HOME/.config/btop/themes/current.theme"
