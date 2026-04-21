@@ -18,6 +18,7 @@ $ yay -S $(cat ~/.dots/packages.lst)
 $ flatpak install $(cat ~/.dots/flatpak.lst)
 $ mkdir -p ~/.local/share/applications
 ln -s /var/lib/flatpak/exports/share/applications/*.desktop ~/.local/share/applications/ 
+systemctl --user enable --now waybar.service
 ```
 ```
 ```

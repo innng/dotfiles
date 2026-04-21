@@ -1,2 +1,2 @@
-include=~/.dots/config/mako/core.ini
+include=~/.dots/source/mako/core.ini
 include=~/.config/theme/mako.ini

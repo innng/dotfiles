@@ -46,3 +46,8 @@ man-db
 libnotify
 xdg-desktop-portal-gtk
 gnome-themes-extra
+ttf-jetbrains-mono-nerd
+woff2-font-awesome
+fontconfig
+ttf-mononoki-nerd
+ttf-firacode-nerd

@@ -1,5 +1,5 @@
 * {
-    main-bg:            #{{ background_strip }}e6;
+    main-bg:            #{{ background_strip }}b3;
     main-fg:            #{{ foreground_strip }}ff;
     main-br:            #{{ accent_strip }}ff;
     main-ex:            #{{ selection_background_strip }}ff;
