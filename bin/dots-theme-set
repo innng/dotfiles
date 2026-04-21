@@ -42,3 +42,11 @@ fi
 if pgrep -x swayosd >/dev/null; then
   killall -SIGUSR1 swayosd
 fi
+
+# btop theme symlink
+mkdir -p "$HOME/.config/btop/themes"
+ln -sf "$OUTPUT_DIR/btop.theme" "$HOME/.config/btop/themes/current.theme"
+
+if pgrep -x btop >/dev/null; then
+  killall -SIGUSR2 btop
+fi
