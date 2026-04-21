@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEMPLATES_DIR="$HOME/.dots/config/templates"
+TEMPLATES_DIR="$HOME/.dots/themes/templates"
 OUTPUT_DIR="$HOME/.config/theme"
 COLORS_FILE="$OUTPUT_DIR/colors.toml"
 
@@ -43,3 +43,5 @@ done
 
 rm "$sed_script"
 
+mkdir -p "$HOME/.config/gtk-4.0"
+ln -sf "$OUTPUT_DIR/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"

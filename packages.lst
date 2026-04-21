@@ -40,3 +40,9 @@ rofi
 gnome-calculator
 iwd
 telegram-desktop
+xdg-desktop-portal
+bluez
+man-db
+libnotify
+xdg-desktop-portal-gtk
+gnome-themes-extra

@@ -5,7 +5,7 @@ if [[ -z $1 ]]; then
   exit 1
 fi
 
-THEMES_DIR="$HOME/.dots/config/themes"
+THEMES_DIR="$HOME/.dots/themes"
 OUTPUT_DIR="$HOME/.config/theme"
 
 THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
@@ -24,6 +24,15 @@ echo "$THEME_NAME" >"$OUTPUT_DIR/name"
 
 dots-theme-set-templates
 
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+
+# Icon theme
+ICONS_FILE="$OUTPUT_DIR/icons.theme"
+if [[ -f $ICONS_FILE ]]; then
+  gsettings set org.gnome.desktop.interface icon-theme "$(<$ICONS_FILE)"
+fi
+
 if pgrep -x waybar >/dev/null; then
   killall -SIGUSR2 waybar
 fi
@@ -33,4 +42,3 @@ fi
 if pgrep -x swayosd >/dev/null; then
   killall -SIGUSR1 swayosd
 fi
-

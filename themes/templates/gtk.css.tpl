@@ -1,0 +1,14 @@
+@define-color window_bg_color {{ background }};
+@define-color window_fg_color {{ foreground }};
+@define-color view_bg_color {{ background }};
+@define-color view_fg_color {{ foreground }};
+@define-color accent_color {{ accent }};
+@define-color accent_bg_color {{ accent }};
+@define-color headerbar_bg_color {{ background }};
+@define-color headerbar_fg_color {{ foreground }};
+@define-color card_bg_color {{ background }};
+@define-color card_fg_color {{ foreground }};
+@define-color sidebar_bg_color {{ background }};
+@define-color sidebar_fg_color {{ foreground }};
+@define-color dialog_bg_color {{ background }};
+@define-color dialog_fg_color {{ foreground }};
