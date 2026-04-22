@@ -3,6 +3,6 @@
 # Ensure bins are in the path
 export PATH=$HOME/.dots/bin:$PATH:$HOME/.local/bin
 
-# Set default terminal and editor
-source ~/.config/uwsm/default
-
+export TERMINAL=xdg-terminal-exec
+export EDITOR=nvim
+export ZDOTDIR="$HOME/.config/zsh"
