@@ -1,0 +1,21 @@
+{
+  "primary": "{{ accent }}",
+  "secondary": "{{ color4 }}",
+  "accent": "{{ accent }}",
+  "error": "{{ color1 }}",
+  "warning": "{{ color3 }}",
+  "success": "{{ color2 }}",
+  "info": "{{ color4 }}",
+  "text": "{{ foreground }}",
+  "textMuted": "{{ color8 }}",
+  "background": "{{ background }}",
+  "backgroundPanel": "{{ color0 }}",
+  "backgroundElement": "{{ color8 }}",
+  "border": "{{ color8 }}",
+  "borderActive": "{{ accent }}",
+  "borderSubtle": "{{ color0 }}",
+  "diffAdded": "{{ color2 }}",
+  "diffRemoved": "{{ color1 }}",
+  "diffAddedBg": "{{ background }}",
+  "diffRemovedBg": "{{ background }}"
+}

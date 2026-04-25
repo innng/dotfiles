@@ -6,8 +6,14 @@ selection_background {{ selection_background }}
 cursor {{ cursor }}
 cursor_text_color {{ background }}
 
+url_color {{ accent }}
+
 active_border_color {{ accent }}
+inactive_border_color {{ color8 }}
+active_tab_foreground {{ background }}
 active_tab_background {{ accent }}
+inactive_tab_foreground {{ color8 }}
+inactive_tab_background {{ background }}
 
 color0 {{ color0 }}
 color1 {{ color1 }}

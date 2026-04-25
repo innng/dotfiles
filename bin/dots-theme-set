@@ -42,6 +42,9 @@ fi
 if pgrep -x swayosd >/dev/null; then
   killall -SIGUSR1 swayosd
 fi
+if pgrep -x kitty >/dev/null; then
+  killall -SIGUSR1 kitty
+fi
 
 hyprctl reload
 
@@ -51,4 +54,49 @@ ln -sf "$OUTPUT_DIR/btop.theme" "$HOME/.config/btop/themes/current.theme"
 
 if pgrep -x btop >/dev/null; then
   killall -SIGUSR2 btop
+fi
+
+# wlogout theme
+mkdir -p "$HOME/.config/wlogout"
+if [[ -f "$OUTPUT_DIR/wlogout.css" ]]; then
+  cp "$OUTPUT_DIR/wlogout.css" "$HOME/.config/wlogout/style.css"
+fi
+
+# Vencord theme symlink
+VENCORD_THEMES_DIR="$HOME/.config/Vencord/themes"
+if [[ -d $VENCORD_THEMES_DIR ]]; then
+  ln -sf "$OUTPUT_DIR/discord.css" "$VENCORD_THEMES_DIR/theme.css"
+fi
+
+# Spotify (Spicetify)
+if [[ -f "$OUTPUT_DIR/spotify.ini" ]] && command -v spicetify >/dev/null; then
+  SPICETIFY_USER_THEMES="$HOME/.config/spicetify/Themes"
+  ZIRO_SRC=""
+  for dir in /opt/spicetify-cli/Themes/Ziro /usr/share/spicetify/Themes/Ziro; do
+    if [[ -d "$dir" ]]; then
+      ZIRO_SRC="$dir"
+      break
+    fi
+  done
+  ZIRO_DIR="$SPICETIFY_USER_THEMES/Ziro"
+  if [[ -n $ZIRO_SRC ]]; then
+    mkdir -p "$SPICETIFY_USER_THEMES"
+    cp -r "$ZIRO_SRC" "$ZIRO_DIR"
+  fi
+  if [[ -d "$ZIRO_DIR" ]]; then
+    SPOTIFY_SCHEME=$(grep -oP '^\[\K[^\]]+' "$OUTPUT_DIR/spotify.ini" | head -1)
+    # Remove existing section if present, then append ours
+    sed -i "/^\[${SPOTIFY_SCHEME}\]/,/^\[/{/^\[${SPOTIFY_SCHEME}\]/d;/^\[/!d}" "$ZIRO_DIR/color.ini"
+    printf '\n' >> "$ZIRO_DIR/color.ini"
+    cat "$OUTPUT_DIR/spotify.ini" >> "$ZIRO_DIR/color.ini"
+    spicetify config current_theme Ziro
+    spicetify config color_scheme "$SPOTIFY_SCHEME"
+    spicetify apply
+  fi
+fi
+
+# OpenCode theme
+OPENCODE_THEMES_DIR="$HOME/.config/opencode/themes"
+if [[ -d $OPENCODE_THEMES_DIR ]] && [[ -f "$OUTPUT_DIR/opencode.json" ]]; then
+  cp "$OUTPUT_DIR/opencode.json" "$OPENCODE_THEMES_DIR/$THEME_NAME.json"
 fi

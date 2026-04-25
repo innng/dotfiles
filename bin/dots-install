@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+DOTS_DIR="$HOME/.dots"
+CONFIG_DIR="$HOME/.config"
+
+echo "Installing dotfiles..."
+
+mkdir -p "$CONFIG_DIR/btop/themes"
+mkdir -p "$CONFIG_DIR/fontconfig"
+mkdir -p "$CONFIG_DIR/gtk-4.0"
+mkdir -p "$CONFIG_DIR/hypr"
+mkdir -p "$CONFIG_DIR/kitty"
+mkdir -p "$CONFIG_DIR/mako"
+mkdir -p "$CONFIG_DIR/rofi"
+mkdir -p "$CONFIG_DIR/swayosd"
+mkdir -p "$CONFIG_DIR/waybar"
+mkdir -p "$CONFIG_DIR/wlogout"
+mkdir -p "$CONFIG_DIR/zsh"
+mkdir -p "$CONFIG_DIR/uwsm"
+
+cp "$DOTS_DIR/config/btop/btop.conf" "$CONFIG_DIR/btop/btop.conf"
+cp "$DOTS_DIR/config/fontconfig/fonts.conf" "$CONFIG_DIR/fontconfig/fonts.conf"
+cp "$DOTS_DIR/config/hypr/hyprland.conf" "$CONFIG_DIR/hypr/hyprland.conf"
+cp "$DOTS_DIR/config/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
+cp "$DOTS_DIR/config/mako/config" "$CONFIG_DIR/mako/config"
+cp "$DOTS_DIR/config/rofi/config.rasi" "$CONFIG_DIR/rofi/config.rasi"
+cp "$DOTS_DIR/config/swayosd/config.toml" "$CONFIG_DIR/swayosd/config.toml"
+cp "$DOTS_DIR/config/waybar/config.jsonc" "$CONFIG_DIR/waybar/config.jsonc"
+cp "$DOTS_DIR/config/waybar/style.css" "$CONFIG_DIR/waybar/style.css"
+cp "$DOTS_DIR/config/wlogout/layout" "$CONFIG_DIR/wlogout/layout"
+cp "$DOTS_DIR/config/wlogout/style.css" "$CONFIG_DIR/wlogout/style.css"
+cp "$DOTS_DIR/config/zsh/.zshrc" "$CONFIG_DIR/zsh/.zshrc"
+cp "$DOTS_DIR/config/zsh/.zshenv" "$CONFIG_DIR/zsh/.zshenv"
+cp "$DOTS_DIR/config/uwsm/env" "$CONFIG_DIR/uwsm/env"
+
+echo "Dotfiles installed to $CONFIG_DIR"
+echo "Run 'dots-theme-set <theme>' to apply a theme."

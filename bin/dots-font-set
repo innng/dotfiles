@@ -17,13 +17,27 @@ if [[ -f ~/.dots/source/kitty/kitty.conf ]]; then
   pkill -USR1 kitty
 fi
 
-if [[ -f ~/.config/waybar/style.css ]]; then
-  sed -i "s/font-family: .*/font-family: '$font_name';/g" ~/.config/waybar/style.css
-  pkill waybar && waybar &>/dev/null &
+if [[ -f ~/.dots/source/waybar/style.css ]]; then
+  sed -i "s/font-family: .*/font-family: '$font_name';/g" ~/.dots/source/waybar/style.css
+  if pgrep -x waybar >/dev/null; then
+    killall -SIGUSR2 waybar
+  fi
 fi
 
 if [[ -f ~/.dots/source/hypr/looknfeel.conf ]]; then
   sed -i "s/font_family = .*/font_family = $font_name/g" ~/.dots/source/hypr/looknfeel.conf
+fi
+
+if [[ -f ~/.dots/source/rofi/config.rasi ]]; then
+  sed -i "s/font:.*;/font:                        \"$font_name 10\";/g" ~/.dots/source/rofi/config.rasi
+fi
+
+if [[ -f ~/.dots/source/swayosd/style.css ]]; then
+  sed -i "s/font-family: '[^']*'/font-family: '$font_name'/g" ~/.dots/source/swayosd/style.css
+fi
+
+if [[ -f ~/.dots/config/fontconfig/fonts.conf ]]; then
+  sed -i "/<string>monospace<\/string>/,/<\/match>/ s|<string>[^<]*Nerd Font[^<]*</string>|<string>$font_name</string>|" ~/.dots/config/fontconfig/fonts.conf
 fi
 
 echo "Font set to '$font_name'"
