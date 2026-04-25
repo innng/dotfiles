@@ -1,0 +1,5 @@
+zsh-users/zsh-completions kind:fpath
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+hlissner/zsh-autopair
+zsh-users/zsh-syntax-highlighting
