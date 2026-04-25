@@ -11,7 +11,8 @@
     "bluetooth",
     "network",
     "pulseaudio",
-    "cpu"
+    "cpu",
+    "idle_inhibitor"
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -98,5 +99,12 @@
     "on-scroll-down": "",
     "on-scroll-left": "",
     "on-scroll-right": ""
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
   }
 }
