@@ -16,3 +16,5 @@ if (( ${+functions[_history-substring-search-begin]} )); then
   bindkey "^[[A" history-substring-search-up    # up
   bindkey "^[[B" history-substring-search-down  # down
 fi
+
+bindkey '^I^I' autosuggest-accept

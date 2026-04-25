@@ -3,6 +3,7 @@
 source "$ZSH_SOURCE_DIR/conf.d/alias.zsh"
 source "$ZSH_SOURCE_DIR/conf.d/bindings.zsh"
 source "$ZSH_SOURCE_DIR/conf.d/envs.zsh"
+source "$ZSH_SOURCE_DIR/conf.d/options.zsh"
 
 _antidote_init() {
   source "/usr/share/zsh-antidote/antidote.zsh"
@@ -11,11 +12,11 @@ _antidote_init() {
   antidote load "$ZSH_SOURCE_DIR/plugins.txt"
 }
 
-_load_confs() {
-  for file in "$ZSH_SOURCE_DIR/conf.d/"*.zsh; do
-    [ -r "$file"]
-
-}
+#_load_confs() {
+#  for file in "$ZSH_SOURCE_DIR/conf.d/"*.zsh; do
+#    [ -r "$file"]
+#
+#}
 
 _load_functions() {
   for file in "$ZSH_SOURCE_DIR/functions/"*.zsh; do
@@ -53,6 +54,10 @@ typeset -U path
 
 if command -v starship &>/dev/null; then
   source "$ZSH_SOURCE_DIR/starship_init.zsh"
+fi
+
+if command -v thefuck &>/dev/null; then
+  eval $(thefuck --alias fuck)
 fi
 
 if [[ $- == *i* ]]; then

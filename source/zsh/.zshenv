@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+ZSH_CACHE_DIR="$HOME/.cache/zsh"
 ZDOTDIR="$HOME/.config/zsh"
 ZSH_SOURCE_DIR="$HOME/.dots/source/zsh"
 PATH="$HOME/.local/bin:$HOME/.dots/bin:$PATH"

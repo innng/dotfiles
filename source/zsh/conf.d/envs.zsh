@@ -4,9 +4,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# TODO: update this to ~/.dots/source/starship and create template file from it
 STARSHIP_CONFIG="$XDG_CONFIG_HOME/theme/starship.toml"
+PATH=$PATH:~/.spicetify
 
 export LESSHISTFILE HISTFILE HISTSIZE SAVEHIST ZSH_AUTOSUGGEST_STRATEGY \
-  STARSHIP_CONFIG
+  STARSHIP_CONFIG PATH
 
