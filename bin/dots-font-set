@@ -1,0 +1,29 @@
+#!/bin/bash
+
+font_name="$1"
+
+if [[ -z $font_name ]]; then
+  echo "Usage: dots-font-set <font-name>"
+  exit 1
+fi
+
+if ! fc-list | grep -iq "$font_name"; then
+  echo "Font '$font_name' not found on system."
+  exit 1
+fi
+
+if [[ -f ~/.dots/source/kitty/kitty.conf ]]; then
+  sed -i "s/^font_family .*/font_family $font_name/g" ~/.dots/source/kitty/kitty.conf
+  pkill -USR1 kitty
+fi
+
+if [[ -f ~/.config/waybar/style.css ]]; then
+  sed -i "s/font-family: .*/font-family: '$font_name';/g" ~/.config/waybar/style.css
+  pkill waybar && waybar &>/dev/null &
+fi
+
+if [[ -f ~/.dots/source/hypr/looknfeel.conf ]]; then
+  sed -i "s/font_family = .*/font_family = $font_name/g" ~/.dots/source/hypr/looknfeel.conf
+fi
+
+echo "Font set to '$font_name'"

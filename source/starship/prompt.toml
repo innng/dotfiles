@@ -1,0 +1,47 @@
+command_timeout = 3000
+palette = "theme"
+
+[palettes.theme]
+foreground = "#e0def4"
+background = "#191724"
+accent = "#c4a7e7"
+color0 = "#26233a"
+color1 = "#eb6f92"
+color2 = "#31748f"
+color3 = "#f6c177"
+color4 = "#9ccfd8"
+color5 = "#c4a7e7"
+color6 = "#ebbcba"
+color7 = "#e0def4"
+color8 = "#6e6a86"
+color9 = "#eb6f92"
+color10 = "#31748f"
+color11 = "#f6c177"
+color12 = "#9ccfd8"
+color13 = "#c4a7e7"
+color14 = "#ebbcba"
+color15 = "#e0def4"
+
+[character]
+success_symbol = "[>](bold fg:color2)"
+error_symbol = "[>](bold fg:color1)"
+vimcmd_symbol = "[<](bold fg:accent)"
+
+[directory]
+style = "bold fg:foreground"
+truncation_length = 3
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+style = "bold fg:accent"
+
+[git_status]
+style = "bold fg:color1"
+
+[cmd_duration]
+min_time = 3000
+style = "fg:color3"
+
+[line_break]
+disabled = false
