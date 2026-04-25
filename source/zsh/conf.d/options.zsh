@@ -1,0 +1,131 @@
+# Meta/UTF-8 settings
+setopt COMBINING_CHARS
+
+setopt APPEND_HISTORY           # Append to history file
+setopt SHARE_HISTORY            # Share history across sessions
+setopt HIST_IGNORE_DUPS         # Ignore duplicate commands
+setopt HIST_IGNORE_ALL_DUPS     # Remove older duplicate from history
+setopt HIST_IGNORE_SPACE        # Ignore commands starting with space
+setopt HIST_REDUCE_BLANKS       # Remove unnecessary blanks
+setopt HIST_VERIFY              # Don't execute immediately upon history expansion
+
+# Completion configuration
+setopt COMPLETE_IN_WORD         # Complete from both ends of word
+setopt ALWAYS_TO_END            # Move cursor to end after completion
+setopt MENU_COMPLETE            # Show completion menu on tab
+setopt AUTO_MENU                # Show completion menu on tab
+
+# Directory navigation
+setopt AUTO_CD                  # cd by typing directory name
+setopt CHASE_LINKS              # Mark symlinked directories
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=* l:|=*'
+
+# Colored completion listings
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Show extra file information when completing (like ls -F)
+zstyle ':completion:*' file-list all
+
+# Show all completions at once (no paging)
+zstyle ':completion:*' list-prompt ''
+zstyle ':completion:*' select-prompt ''
+
+# Don't complete hidden files unless explicitly starting with dot
+zstyle ':completion:*' match-hidden-files off
+
+# Extended globbing
+setopt EXTENDED_GLOB
+
+# Don't beep on errors
+unsetopt BEEP
+
+# Allow comments in interactive shells
+setopt INTERACTIVE_COMMENTS
+
+# Ensure mise works (disable command hashing)
+setopt NO_HASH_CMDS
+setopt NO_HASH_DIRS
+
+# TODO: check if this fzf conflicts with functions/fzf.zsh
+# fzf ZLE widgets
+if command -v fzf &>/dev/null; then
+  # fzf file/directory search widget (Ctrl+Alt+F)
+  fzf-file-widget() {
+    local fd_cmd=$(command -v fdfind || command -v fd || echo "fd")
+    local current_token="${LBUFFER##* }"
+    local expanded_token=""
+    if [[ -n "$current_token" ]]; then
+      expanded_token=$(eval echo "$current_token" 2>/dev/null || echo "$current_token")
+    fi
+
+    local selected
+    if [[ "$expanded_token" == */ ]] && [[ -d "$expanded_token" ]]; then
+      selected=$($fd_cmd --color=always --base-directory="$expanded_token" 2>/dev/null | \
+        fzf --multi --ansi --prompt="Directory $expanded_token> " \
+          --preview="[[ -d $expanded_token{} ]] && ls -lah $expanded_token{} || bat --color=always --style=numbers $expanded_token{} 2>/dev/null || cat $expanded_token{}")
+      [[ -n "$selected" ]] && selected="${expanded_token}${selected}"
+    else
+      selected=$($fd_cmd --color=always 2>/dev/null | \
+        fzf --multi --ansi --prompt="Directory> " --query="$expanded_token" \
+          --preview="[[ -d {} ]] && ls -lah {} || bat --color=always --style=numbers {} 2>/dev/null || cat {}")
+    fi
+
+    if [[ -n "$selected" ]]; then
+      selected=$(printf '%q' "$selected")
+      LBUFFER="${LBUFFER%$current_token}${selected} "
+    fi
+    zle reset-prompt
+  }
+  zle -N fzf-file-widget
+  bindkey '^[^F' fzf-file-widget  # Ctrl+Alt+F
+
+  # fzf git log search widget (Ctrl+Alt+L)
+  fzf-git-log-widget() {
+    if ! git rev-parse --git-dir >/dev/null 2>&1; then
+      echo "Not in a git repository." >&2
+      return 1
+    fi
+
+    local selected
+    selected=$(git log --no-show-signature --color=always \
+      --format='%C(bold blue)%h%C(reset) - %C(cyan)%ad%C(reset) %C(yellow)%d%C(reset) %C(normal)%s%C(reset)  %C(dim normal)[%an]%C(reset)' \
+      --date=short | \
+      fzf --ansi --multi --scheme=history --prompt="Git Log> " \
+        --preview='git show --color=always --stat --patch {1}' \
+        --preview-window=right:50%:wrap | \
+      awk '{print $1}' | \
+      xargs -I {} git rev-parse {} 2>/dev/null | \
+      tr '\n' ' ')
+
+    if [[ -n "$selected" ]]; then
+      LBUFFER="${LBUFFER}${selected}"
+    fi
+    zle reset-prompt
+  }
+  zle -N fzf-git-log-widget
+  bindkey '^[^L' fzf-git-log-widget  # Ctrl+Alt+L
+
+  # fzf variables search widget (Ctrl+V)
+  fzf-variables-widget() {
+    local current_token="${LBUFFER##* }"
+    local cleaned_token="${current_token#\$}"
+
+    local selected
+    selected=$(typeset -p | awk '{print $1, $2}' | sort -u | awk '{print $2}' | \
+      fzf --multi --prompt="Variables> " --preview-window=wrap \
+        --preview='echo {} && typeset -p {} 2>/dev/null || echo "No details available"' \
+        --query="$cleaned_token")
+
+    if [[ -n "$selected" ]]; then
+      if [[ "$current_token" == \$* ]]; then
+        selected="\$${selected}"
+      fi
+      LBUFFER="${LBUFFER%$current_token}${selected} "
+    fi
+    zle reset-prompt
+  }
+  zle -N fzf-variables-widget
+  bindkey '^V' fzf-variables-widget  # Ctrl+V
+fi
