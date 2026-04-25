@@ -1,13 +1,17 @@
 @import "../../../.config/theme/waybar.css";
 
+window#waybar {
+  background-color: alpha(@background, 0.85);
+}
+
 * {
-  background-color: @background;
+  background-color: transparent;
   color: @foreground;
 
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'JetBrainsMono Nerd Font';
+  font-family: 'FiraCode';
   font-size: 12px;
 }
 
