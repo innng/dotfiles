@@ -1,0 +1,9 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.systemd1.manage-units" && subject.user == "ing") {
+        var unit = action.lookup("unit");
+        var verb = action.lookup("verb");
+        if (unit && verb && ((unit == "sddm.service" && verb == "restart") || (unit.substring(0, 4) == "run-" && verb == "start"))) {
+            return polkit.Result.YES;
+        }
+    }
+});
