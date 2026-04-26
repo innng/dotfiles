@@ -37,8 +37,23 @@ echo "Installing dotfiles..."
 
 find "$DOTS_DIR/config" -type f | while read -r file; do
     rel="${file#$DOTS_DIR/config/}"
+    dest="$CONFIG_DIR/$rel"
     mkdir -p "$CONFIG_DIR/$(dirname "$rel")"
-    cp "$file" "$CONFIG_DIR/$rel"
+    cp "$file" "$dest"
+    echo "  updated $dest"
 done
+
+echo "Installing system configuration files..."
+
+find "$DOTS_DIR/etc" -type f | while read -r file; do
+    rel="${file#$DOTS_DIR/etc/}"
+    dest="/etc/$rel"
+    sudo mkdir -p "/etc/$(dirname "$rel")"
+    sudo cp "$file" "$dest"
+    echo "  updated $dest"
+done
+
+cp "$DOTS_DIR/XCompose" "$HOME/.XCompose"
+echo "  updated $HOME/.XCompose"
 
 echo "Done! Reboot or log out to apply all changes."
