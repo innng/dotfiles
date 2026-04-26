@@ -13,6 +13,45 @@ Hyprland setup heavily based on [HyDE](https://github.com/HyDE-Project/HyDE) and
 ### Packages
 See `packages.lst` and `flatpak.lst`.
 
+Key packages this project depends on:
+| Category | Packages |
+|----------|----------|
+| Display compositor | `hyprland`, `hyprlock`, `hypridle`, `hyprshot` |
+| Display manager | `sddm`, `qt6-wayland` |
+| Bar/notifications | `waybar`, `mako`, `swayosd` |
+| Launchers | `rofi`, `wlogout` |
+| Shell | `zsh`, `starship`, `fzf`, `fd` |
+| Terminal | `kitty` |
+| GPU | `nvidia-dkms` (or `nvidia`), `nvidia-utils` |
+| Theming | `spicetify-cli`, `spicetify-themes`, `gnome-themes-extra` |
+
+### System Requirements
+
+#### NVIDIA
+This setup targets **NVIDIA GPUs**. The following are required for proper operation:
+
+**Kernel parameters** (`/etc/default/grub`):
+```
+nvidia_drm.modeset=1 nvidia_drm.fbdev=1
+```
+
+**Environment variables** (set in Hyprland config):
+```
+GBM_BACKEND=nvidia-drm
+__GLX_VENDOR_LIBRARY_NAME=nvidia-drm
+```
+
+**SDDM display config** (`/etc/X11/xorg.conf.d/10-sddm-monitor.conf`):
+NVIDIA MetaModes to select the primary display at the login screen. See [etc/X11/xorg.conf.d/10-sddm-monitor.conf](etc/X11/xorg.conf.d/10-sddm-monitor.conf).
+
+**Polkit rules** (`/etc/polkit-1/rules.d/50-restart-sddm.rules`):
+Allows passwordless SDDM restart for applying display changes.
+
+#### Other
+- **XCompose**: Dead key compose mappings (see [XCompose](XCompose))
+- **Flatpak**: Desktop entry symlinks for Flatpak apps in `~/.local/share/applications/`
+- **Font handling**: Uses `fontconfig` + Nerd fonts; see Font System below
+
 ## Install
 
 ```sh
