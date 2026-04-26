@@ -5,6 +5,34 @@ set -e
 DOTS_DIR="$HOME/.dots"
 CONFIG_DIR="$HOME/.config"
 
+if ! command -v yay &>/dev/null; then
+    echo "Installing yay..."
+    sudo pacman -S --needed --noconfirm git base-devel
+    tmpdir=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+    cd "$tmpdir/yay" && makepkg -si --noconfirm
+    rm -rf "$tmpdir"
+else
+    echo "yay already installed, skipping."
+fi
+
+echo "Updating packages..."
+yay -Syyuu --noconfirm
+
+echo "Installing packages..."
+yay -S --needed --noconfirm $(grep -v '^#' "$DOTS_DIR/packages.lst" | grep -v '^$')
+
+if [ -f "$DOTS_DIR/flatpak.lst" ]; then
+    echo "Installing flatpaks..."
+    flatpak install $(cat "$DOTS_DIR/flatpak.lst")
+else
+    echo "No flatpak.lst found, skipping."
+fi
+
+echo "Linking flatpak desktop entries..."
+mkdir -p ~/.local/share/applications
+ln -sf /var/lib/flatpak/exports/share/applications/*.desktop ~/.local/share/applications/ 2>/dev/null || true
+
 echo "Installing dotfiles..."
 
 find "$DOTS_DIR/config" -type f | while read -r file; do
@@ -13,5 +41,7 @@ find "$DOTS_DIR/config" -type f | while read -r file; do
     cp "$file" "$CONFIG_DIR/$rel"
 done
 
-echo "Dotfiles installed to $CONFIG_DIR"
-echo "Run 'dots-theme-set <theme>' to apply a theme."
+echo "Enabling waybar service..."
+systemctl --user enable --now waybar.service 2>/dev/null || true
+
+echo "Done! Reboot or log out to apply all changes."

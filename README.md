@@ -15,27 +15,13 @@ See `packages.lst` and `flatpak.lst`.
 
 ```sh
 git clone git@github.com:innng/dotfiles.git ~/.dots
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-yay -Syyuu
-yay -S $(grep -v '^#' ~/.dots/packages.lst | grep -v '^$')
-flatpak install $(cat ~/.dots/flatpak.lst)
-mkdir -p ~/.local/share/applications
-ln -s /var/lib/flatpak/exports/share/applications/*.desktop ~/.local/share/applications/
-systemctl --user enable --now waybar.service
-```
-
-Then deploy config files:
-
-```sh
 ~/.dots/bin/dots-install
 ```
 
-And apply a theme:
+Reboot or log out after install, then apply a theme and font:
 
 ```sh
-~/.dots/bin/dots-theme-set catppuccin
-# or
-~/.dots/bin/dots-theme-set rose-pine
+dots-theme-set <catppuccin|rose-pine> 
 ```
 
 ## Theme System
