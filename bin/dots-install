@@ -41,7 +41,4 @@ find "$DOTS_DIR/config" -type f | while read -r file; do
     cp "$file" "$CONFIG_DIR/$rel"
 done
 
-echo "Enabling waybar service..."
-systemctl --user enable --now waybar.service 2>/dev/null || true
-
 echo "Done! Reboot or log out to apply all changes."
