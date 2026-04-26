@@ -9,9 +9,7 @@ Hyprland setup heavily based on [HyDE](https://github.com/HyDE-Project/HyDE) and
 ### Projects
 - Bootloader: [Catppuccin Grub](https://github.com/catppuccin/grub)
 - Greeter: [Catppuccin SDDM](https://github.com/catppuccin/sddm)
-- Browser themes:
-  - Firefox: [Catppuccin Firefox](https://github.com/catppuccin/firefox), [Rose Pine Firefox](https://github.com/rose-pine/firefox)
-  - Zen Browser: [Catppuccin Zen](https://github.com/catppuccin/zen-browser), [Rose Pine Zen](https://github.com/rose-pine/zen-browser)
+- Firefox: [Catppuccin Firefox](https://github.com/catppuccin/firefox), [Rose Pine Firefox](https://github.com/rose-pine/firefox)
 - Spotify: [Catppuccin Spotify](https://github.com/catppuccin/spicetify), [Rose Pine Spotify](https://github.com/rose-pine/spicetify)
 
 ### Packages
