@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "hyprshutdown --vt 2",
+    "action" : "systemd-run --on-active=2s systemctl restart sddm && loginctl terminate-user $USER",
     "text" : "Logout",
     "keybind" : "e"
 }
