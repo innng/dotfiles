@@ -17,4 +17,9 @@ if (( ${+functions[_history-substring-search-begin]} )); then
   bindkey "^[[B" history-substring-search-down  # down
 fi
 
+# Double tab to accept suggestions
 bindkey '^I^I' autosuggest-accept
+
+# Restore del key functions
+bindkey "^[[3~" delete-char
+bindkey "^[[3;5~" delete-word
