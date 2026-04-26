@@ -9,6 +9,10 @@ Hyprland setup heavily based on [HyDE](https://github.com/HyDE-Project/HyDE) and
 ### Projects
 - Bootloader: [Catppuccin Grub](https://github.com/catppuccin/grub)
 - Greeter: [Catppuccin SDDM](https://github.com/catppuccin/sddm)
+- Browser themes:
+  - Firefox: [Catppuccin Firefox](https://github.com/catppuccin/firefox), [Rose Pine Firefox](https://github.com/rose-pine/firefox)
+  - Zen Browser: [Catppuccin Zen](https://github.com/catppuccin/zen-browser), [Rose Pine Zen](https://github.com/rose-pine/zen-browser)
+- Spotify: [Catppuccin Spotify](https://github.com/catppuccin/spicetify), [Rose Pine Spotify](https://github.com/rose-pine/spicetify)
 
 ### Packages
 See `packages.lst` and `flatpak.lst`.
@@ -89,19 +93,13 @@ Each theme can also provide static app-specific config files (like `kitty.conf`,
 | Obsidian | Template | - |
 | OpenCode | Template | - |
 | Spicetify | Static | `spicetify apply` |
+| Firefox | Open URL (Firefox Color) | Confirm in app |
+| Zen Browser | Static | Restart Browser |
+| Telegram | Open URL | Confirm in app |
 
 ### Manual Theme Setup (not templated)
 
-Some applications require manual one-time setup using links or theme files:
-
-#### Telegram Desktop
-- Catppuccin Mocha: `t.me/addtheme/ctp_mocha`
-- Rose Pine: `t.me/addtheme/Rose_Pine_TelegramDesktop`
-- Rose Pine Moon: `t.me/addtheme/Rose_Pine_Moon_TelegramDesktop`
-
-#### Firefox
-- [Catppuccin Firefox](https://github.com/catppuccin/firefox) — requires [Firefox Color](https://addons.mozilla.org/en-GB/firefox/addon/firefox-color/) extension
-- [Rose Pine Firefox](https://github.com/rose-pine/firefox) — requires Firefox Color extension
+Some applications require manual one-time setup:
 
 #### Discord (Vencord)
 Theme CSS is stored in `themes/<name>/discord.css` and auto-symlinked to `~/.config/Vencord/themes/` by `dots-theme-set`.
