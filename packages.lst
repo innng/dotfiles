@@ -14,13 +14,13 @@ tmux
 less
 fzf
 fd
+fastfetch
 
 # Editors
 nvim
 
 # System Monitoring
 btop
-fastfetch
 
 # Fonts
 fontconfig
@@ -48,6 +48,7 @@ bluetui
 # Wayland/Hyprland
 hyprlock
 hypridle
+hyprshot
 grim
 mako
 waybar
