@@ -1,54 +1,79 @@
-firefox
-git
-openssh
-nvim
-less
+# Base/System
 base-devel
+openssh
+git
 flatpak
-nwg-displays
-qt6-svg 
-qt6-declarative 
-qt5-quickcontrols2
-unzip
-mako
-waybar
-awww
-jq
-playerctl
-bluetui
+man-db
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+
+# Shell/Terminal
 zsh
+starship
+tmux
+less
+fzf
+fd
+
+# Editors
+nvim
+
+# System Monitoring
 btop
 fastfetch
-fd
+
+# Fonts
 fontconfig
-fzf
-grim
-hyprlock
-impala
-mako
-nautilus
-dolphin
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
-pamixer
-starship
-swayosd
-tmux
-wiremix
-rofi
-gnome-calculator
-iwd
-telegram-desktop
-xdg-desktop-portal
-bluez
-man-db
-libnotify
-xdg-desktop-portal-gtk
-gnome-themes-extra
 ttf-jetbrains-mono-nerd
-woff2-font-awesome
-fontconfig
 ttf-mononoki-nerd
 ttf-firacode-nerd
-fontconfig
+woff2-font-awesome
+
+# Audio/Volume
+pamixer
+wiremix
+playerctl
+
+# Networking
+iwd
+impala
+
+# Bluetooth
+bluez
+bluetui
+
+# Wayland/Hyprland
+hyprlock
+hypridle
+grim
+mako
+waybar
+rofi
+swayosd
+nwg-displays
+awww
+
+# GUI Apps
+firefox
+nautilus
+dolphin
+gnome-calculator
+telegram-desktop
+spotify
+
+# Spotify Theming
+spicetify-cli
+spicetify-themes
+
+# QT/GTK Theming
+qt6-svg
+qt6-declarative
+qt5-quickcontrols2
+gnome-themes-extra
+
+# Utilities
+unzip
+jq
