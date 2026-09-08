@@ -1,7 +1,5 @@
 # Some dots here and there
 
-Hyprland setup heavily based on [HyDE](https://github.com/HyDE-Project/HyDE) and [Omarchy](https://github.com/basecamp/omarchy).
-
 ![](docs/assets/dots_fastfetch.png)
 
 ## Dependencies
